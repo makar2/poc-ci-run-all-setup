@@ -17,6 +17,7 @@ jobs:
       - run: echo "${{ needs.prep.outputs.status }}"
       - run: echo "${{ needs.prep.outputs.code }}"
       - run: echo "${{ needs.prep.outputs.exit }}"
+      - run: echo "${{ needs.prep.outcome }}"
 
   # test-2:
   #   needs: [test-1]
