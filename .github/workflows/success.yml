@@ -11,21 +11,25 @@ jobs:
 
   test-1:
     needs: [prep]
+    if: needs.prep.outputs.status == 'success'
     runs-on: ubuntu-latest
     steps:
       - run: echo ">>> test-1"
-      - run: echo ${{ needs.prep.outputs.status }}
 
-  # test-2:
-  #   needs: [test-1]
-  #   if: always()
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - run: echo ">>> test-2"
+  test-2:
+    needs:
+      - prep
+      - test-1
+    if: needs.prep.outputs.status == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ">>> test-2"
 
-  # test-3:
-  #   needs: [test-2]
-  #   if: always()
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - run: echo ">>> test-3"
+  test-3:
+    needs:
+      - prep
+      - test-2
+    if: needs.prep.outputs.status == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ">>> test-3"

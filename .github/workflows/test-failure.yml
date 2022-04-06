@@ -4,25 +4,32 @@ on: workflow_dispatch
 jobs:
   prep:
     runs-on: ubuntu-latest
+    outputs:
+      status: ${{ job.status }}
     steps:
       - run: echo ">>> prep"
 
   test-1:
     needs: [prep]
+    if: needs.prep.outputs.status == 'success'
     runs-on: ubuntu-latest
     steps:
       - run: echo ">>> test-1"
 
   test-2:
-    needs: [test-1]
-    if: always()
+    needs:
+      - prep
+      - test-1
+    if: needs.prep.outputs.status == 'success'
     runs-on: ubuntu-latest
     steps:
-      - run: echoooooo
-
+      - run: echooooooooo
+  
   test-3:
-    needs: [test-2]
-    if: always()
+    needs:
+      - prep
+      - test-2
+    if: needs.prep.outputs.status == 'success'
     runs-on: ubuntu-latest
     steps:
       - run: echo ">>> test-3"
