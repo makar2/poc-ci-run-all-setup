@@ -5,7 +5,7 @@ jobs:
   prep:
     runs-on: ubuntu-latest
     outputs:
-      prep-status: ${{ prep.status }}
+      status: ${{ job.status }}
     steps:
       - run: echo ">>> prep"
 
@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo ">>> test-1"
-      - run: echo ${{ needs.prep.outputs.prep-status }}
+      - run: echo ${{ needs.prep.outputs.status }}
 
   # test-2:
   #   needs: [test-1]
