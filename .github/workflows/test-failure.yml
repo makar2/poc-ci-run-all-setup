@@ -8,20 +8,21 @@ jobs:
       - run: echo ">>> prep"
 
   test-1:
+    needs: [prep]
     runs-on: ubuntu-latest
     steps:
       - run: echo ">>> test-1"
 
   test-2:
-    runs-on: ubuntu-latest
-    if: always()
     needs: [test-1]
+    if: always()
+    runs-on: ubuntu-latest
     steps:
       - run: echoooooo
 
   test-3:
-    runs-on: ubuntu-latest
-    if: always()
     needs: [test-2]
+    if: always()
+    runs-on: ubuntu-latest
     steps:
       - run: echo ">>> test-3"
