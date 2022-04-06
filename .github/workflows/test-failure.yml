@@ -11,7 +11,7 @@ jobs:
 
   test-1:
     needs: [prep]
-    if: needs.prep.outputs.status == 'success'
+    if: always() && needs.prep.outputs.status == 'success'
     runs-on: ubuntu-latest
     steps:
       - run: echo ">>> test-1"
@@ -20,7 +20,7 @@ jobs:
     needs:
       - prep
       - test-1
-    if: needs.prep.outputs.status == 'success'
+    if: always() && needs.prep.outputs.status == 'success'
     runs-on: ubuntu-latest
     steps:
       - run: echooooooooo
@@ -29,7 +29,7 @@ jobs:
     needs:
       - prep
       - test-2
-    if: needs.prep.outputs.status == 'success'
+    if: always() && needs.prep.outputs.status == 'success'
     runs-on: ubuntu-latest
     steps:
       - run: echo ">>> test-3"
