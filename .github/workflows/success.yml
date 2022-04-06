@@ -12,12 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo ">>> test-1"
-      - run: echo "${{ needs.prep.outputs.success }}"
-      - run: echo "${{ needs.prep.outputs.pass }}"
-      - run: echo "${{ needs.prep.outputs.status }}"
-      - run: echo "${{ needs.prep.outputs.code }}"
-      - run: echo "${{ needs.prep.outputs.exit }}"
-      - run: echo "${{ needs.prep.outcome }}"
+      - run: echo "${{ prep.status }}"
+      - run: echo "${{ needs.prep.status }}"
 
   # test-2:
   #   needs: [test-1]
