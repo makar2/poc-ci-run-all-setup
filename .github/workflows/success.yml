@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo ">>> test-1"
-      - run: echo "${{ needs.prep.outputs }}"
+      - run: echo "${{ need.prep.outputs }}"
 
   # test-2:
   #   needs: [test-1]
