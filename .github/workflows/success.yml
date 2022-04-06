@@ -1,0 +1,7 @@
+on: workflow_dispatch
+
+jobs:
+  prep:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hellow World."
