@@ -1,3 +1,4 @@
+name: 3 Test Failure
 on: workflow_dispatch
 
 jobs:
